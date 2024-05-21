@@ -88,8 +88,8 @@ RUN pecl install redis && \
 RUN docker-php-ext-enable opcache
 #RUN pecl install xdebug && docker-php-ext-enable xdebug
 
-COPY ./docker/custom-php.ini /usr/local/etc/php/conf.d/
-COPY ./docker/docker-php-ext-opcache.ini /usr/local/etc/php/conf.d/
+COPY ./custom-php.ini /usr/local/etc/php/conf.d/
+COPY ./docker-php-ext-opcache.ini /usr/local/etc/php/conf.d/
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=2.5.0
 
@@ -121,6 +121,6 @@ USER $user
 
 WORKDIR /var/www/html
 
-COPY . /var/www/html
-
+COPY ../../../app /var/www/html
+RUN composer --version
 
