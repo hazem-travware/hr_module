@@ -121,6 +121,6 @@ USER $user
 
 WORKDIR /var/www/html
 
-COPY ../../../app /var/www/html
-RUN composer --version
+COPY . /var/www/html
+
 
